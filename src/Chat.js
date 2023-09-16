@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ScrollToBottom from "react-scroll-to-bottom";
+import pic from "./pic.png"
 
 function Chat({ socket, username, room }) {
   const [currentMessage, setCurrentMessage] = useState("");
@@ -33,6 +34,7 @@ function Chat({ socket, username, room }) {
     <div className="chat-window">
       <div className="chat-header">
         <p>Live Chat</p>
+        <p><img src={pic} style={{height:55}}/></p>
       </div>
       <div className="chat-body">
         <ScrollToBottom className="message-container">
