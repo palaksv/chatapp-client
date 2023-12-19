@@ -2,10 +2,15 @@ import "./App.css";
 import io from "socket.io-client";
 import { useState } from "react";
 import Chat from "./Chat";
+import {useLocation} from "react-router-dom"
 
 const socket = io.connect("https://chatapp-server-pnvj.onrender.com");
 
 function App() {
+
+  const location = useLocation();
+  const urlParams = new URLSearchParams(location.search);
+  const code = urlParams.get('code');
   const [username, setUsername] = useState("");
   const [room, setRoom] = useState("");
   const [showChat, setShowChat] = useState(false);
@@ -32,6 +37,7 @@ function App() {
           <input
             type="text"
             placeholder="Room ID..."
+            value={code}
             onChange={(event) => {
               setRoom(event.target.value);
             }}
